@@ -1,0 +1,45 @@
+# Dependencies / build
+/node_modules
+/dist
+/.angular
+*.log
+
+# IDE
+.idea
+.vscode
+
+# Worktrees
+.worktrees/
+
+# OS
+.DS_Store
+.superpowers/sdd/
+
+
+# Angular CLI additions
+/tmp
+/out-tsc
+/bazel-out
+npm-debug.log
+yarn-error.log
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+Thumbs.db

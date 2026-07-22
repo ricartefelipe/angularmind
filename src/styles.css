@@ -1,0 +1,22 @@
+:root {
+  --bg: #f6f7f9;
+  --fg: #1a1d23;
+  --accent: #0b6e4f;
+  --danger: #b00020;
+  --border: #d5d9e0;
+  --radius: 8px;
+  --font: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: linear-gradient(160deg, #eef3f0 0%, var(--bg) 40%, #e8eef8 100%);
+  color: var(--fg);
+  min-height: 100vh;
+}
+a { color: var(--accent); }
+button, input, select {
+  font: inherit;
+}
