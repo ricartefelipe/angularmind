@@ -2020,49 +2020,15 @@ EOF
 
 - [ ] **Step 1: README**
 
-```markdown
-# AngularMind Wallet
+Escrever `README.md` com:
 
-Carteira digital de estudo em **Angular 19** (standalone + signals) — mesmo domínio/contrato da trilha VueMind.
-
-## Como rodar
-
-\`\`\`bash
-npm install
-npm start
-\`\`\`
-
-Abra `http://localhost:4200`.
-
-**Login demo:** `demo@vuemind.dev` / `demo123`
-
-\`\`\`bash
-npm test
-npm run build
-\`\`\`
-
-## O que o app cobre
-
-| Fluxo | Onde estudar |
-|-------|----------------|
-| Login + guard | `src/app/core/auth/`, `features/auth/` |
-| Saldo + extrato | `src/app/features/wallet/` |
-| Favorecidos | `src/app/features/beneficiaries/` |
-| PIX | `src/app/features/transfers/` |
-| MSW | `src/app/mocks/` |
-| HTTP + Bearer | `src/app/core/http/api.interceptor.ts` |
-
-## Entrevista
-
-Leia: [docs/guides/entrevista-angular.md](docs/guides/entrevista-angular.md)
-
-## Apontar para Spring (`vuemind-api`)
-
-1. Comentar `worker.start` em `src/main.ts`
-2. Em `angular.json` → `serve.options.proxyConfig` apontando `/api/v1` → `http://localhost:8080`
-\`\`\`
-```
-
+- Título AngularMind Wallet + uma linha (Angular 19 standalone + signals, mesmo contrato da trilha)
+- Como rodar: `npm install` / `npm start` → `http://localhost:4200`
+- Credenciais: `demo@vuemind.dev` / `demo123`
+- Scripts: `npm test`, `npm run build`
+- Tabela “o que o app cobre” apontando para `core/auth`, `features/wallet|beneficiaries|transfers`, `mocks`, `api.interceptor.ts`
+- Link para `docs/guides/entrevista-angular.md`
+- Como apontar Spring: comentar `worker.start` em `main.ts` + proxy `/api/v1` → `http://localhost:8080`
 - [ ] **Step 2: Guia `docs/guides/entrevista-angular.md`**
 
 Conteúdo obrigatório:
