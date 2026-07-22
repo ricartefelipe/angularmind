@@ -13,4 +13,9 @@ describe('money', () => {
   it('parseReaisToCents rejeita entrada inválida', () => {
     expect(() => parseReaisToCents('abc')).toThrowError('INVALID_MONEY')
   })
+
+  it('parseReaisToCents rejeita valores negativos', () => {
+    expect(() => parseReaisToCents('-0,50')).toThrowError('INVALID_MONEY')
+    expect(() => parseReaisToCents('-10,50')).toThrowError('INVALID_MONEY')
+  })
 })
