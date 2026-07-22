@@ -10,13 +10,16 @@ describe('AuthService', () => {
   let storage: TokenStorage
 
   beforeEach(() => {
+    // Limpa sessionStorage ANTES de criar AuthService — o signal `token`
+    // é inicializado com storage.get() no construtor.
+    sessionStorage.clear()
     TestBed.configureTestingModule({
       providers: [provideHttpClient(), provideHttpClientTesting(), AuthService, TokenStorage],
     })
-    service = TestBed.inject(AuthService)
-    http = TestBed.inject(HttpTestingController)
     storage = TestBed.inject(TokenStorage)
     storage.clear()
+    service = TestBed.inject(AuthService)
+    http = TestBed.inject(HttpTestingController)
   })
 
   afterEach(() => http.verify())
