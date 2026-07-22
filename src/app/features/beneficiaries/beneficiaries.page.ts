@@ -26,7 +26,7 @@ import { AppButtonComponent } from '@/shared/ui/app-button.component'
     </form>
     @if (svc.loading()) {
       <app-loading-block />
-    } @else if (svc.items().length === 0) {
+    } @else if (!svc.error() && svc.items().length === 0) {
       <app-empty-state message="Nenhum favorecido cadastrado." />
     } @else {
       <ul>

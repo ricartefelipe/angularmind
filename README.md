@@ -35,9 +35,9 @@ Leia: [docs/guides/entrevista-angular.md](docs/guides/entrevista-angular.md)
 
 ## Apontar para o Spring
 
-Por padrão o MSW atende `/api/v1` no browser. Para usar o backend Spring (`localhost:8080`):
+Por padrão o MSW atende `/api/v1` no browser durante o desenvolvimento. Builds de produção já ignoram o MSW por meio de `isDevMode()`. Para usar o backend Spring (`localhost:8080`) no ambiente de desenvolvimento:
 
-1. Comente o bloco `worker.start` em `src/main.ts` (mantenha só o `bootstrapApplication`).
+1. Comente/desabilite o bloco que inicia o worker em `src/main.ts` ou condicione-o a uma flag local (mantenha o `bootstrapApplication`).
 2. Configure proxy do dev server — exemplo em `proxy.conf.json`:
 
    ```json

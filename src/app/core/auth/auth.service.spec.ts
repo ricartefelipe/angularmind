@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http'
+import { HttpErrorResponse, provideHttpClient } from '@angular/common/http'
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { AuthService } from './auth.service'
@@ -36,6 +36,28 @@ describe('AuthService', () => {
       email: 'demo@vuemind.dev',
     })
     expect(storage.get()).toBe('mock-jwt-demo')
+  })
+
+  it('mantém sessão vazia quando login retorna 401', () => {
+    let receivedError: HttpErrorResponse | undefined
+
+    service.login('demo@vuemind.dev', 'senha-incorreta').subscribe({
+      error: (error: HttpErrorResponse) => {
+        receivedError = error
+      },
+    })
+
+    const req = http.expectOne('/api/v1/auth/login')
+    req.flush(
+      { message: 'Credenciais inválidas' },
+      { status: 401, statusText: 'Unauthorized' },
+    )
+
+    expect(receivedError?.status).toBe(401)
+    expect(service.isAuthenticated()).toBe(false)
+    expect(service.token()).toBeNull()
+    expect(service.user()).toBeNull()
+    expect(storage.get()).toBeNull()
   })
 
   it('logout limpa sessão', () => {

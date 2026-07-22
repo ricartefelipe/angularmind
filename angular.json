@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "angularmind-tmp": {
+    "angularmind": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angularmind-tmp",
+            "outputPath": "dist/angularmind",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angularmind-tmp:build:production"
+              "buildTarget": "angularmind:build:production"
             },
             "development": {
-              "buildTarget": "angularmind-tmp:build:development"
+              "buildTarget": "angularmind:build:development"
             }
           },
           "defaultConfiguration": "development"

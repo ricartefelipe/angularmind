@@ -24,7 +24,7 @@ import { EmptyStateComponent } from '@/shared/ui/empty-state.component'
     <app-error-banner [message]="wallet.error()" />
     @if (wallet.loading()) {
       <app-loading-block />
-    } @else if (wallet.transactions().length === 0) {
+    } @else if (!wallet.error() && wallet.transactions().length === 0) {
       <app-empty-state message="Nenhuma movimentação neste filtro." />
     } @else {
       <ul>
