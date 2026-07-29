@@ -29,13 +29,13 @@ describe('AuthService', () => {
     const req = http.expectOne('/api/v1/auth/login')
     req.flush({
       accessToken: 'mock-jwt-demo',
-      user: { id: 'u1', name: 'Marion Demo', email: 'demo@vuemind.dev' },
+      user: { id: 'u1', name: 'Felipe Demo', email: 'demo@vuemind.dev' },
     })
     expect(service.isAuthenticated()).toBe(true)
     expect(service.token()).toBe('mock-jwt-demo')
     expect(service.user()).toEqual({
       id: 'u1',
-      name: 'Marion Demo',
+      name: 'Felipe Demo',
       email: 'demo@vuemind.dev',
     })
     expect(storage.get()).toBe('mock-jwt-demo')

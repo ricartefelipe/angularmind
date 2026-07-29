@@ -6,6 +6,15 @@ import { createCorrelationId } from '@/shared/utils/id'
 import { TokenStorage } from '../auth/token.storage'
 import { ApiError } from './api-error'
 
+function resolveApiUrl(url: string): string {
+  if (!url.startsWith('/api/')) return url
+  const base = (document.querySelector('base')?.getAttribute('href') ?? '/').replace(
+    /\/?$/,
+    '/',
+  )
+  return `${base}${url.slice(1)}`
+}
+
 export const apiInterceptor: HttpInterceptorFn = (request, next) => {
   const token = inject(TokenStorage).get()
   const correlationId = createCorrelationId()
@@ -17,7 +26,7 @@ export const apiInterceptor: HttpInterceptorFn = (request, next) => {
     headers = headers.set('Authorization', `Bearer ${token}`)
   }
 
-  return next(request.clone({ headers })).pipe(
+  return next(request.clone({ url: resolveApiUrl(request.url), headers })).pipe(
     catchError((error: HttpErrorResponse) => {
       const body = error.error as ApiErrorBody | undefined
 

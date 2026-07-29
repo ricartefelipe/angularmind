@@ -40,7 +40,7 @@ export type Db = {
 const seed = (): Db => ({
   user: {
     id: 'u1',
-    name: 'Marion Demo',
+    name: 'Felipe Demo',
     email: 'demo@vuemind.dev',
     password: 'demo123',
   },
