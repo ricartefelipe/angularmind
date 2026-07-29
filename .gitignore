@@ -43,3 +43,7 @@ yarn-error.log
 testem.log
 /typings
 Thumbs.db
+.cursor/
+.superpowers/
+AGENTS.md
+PROMPT-EVOLUCAO.md

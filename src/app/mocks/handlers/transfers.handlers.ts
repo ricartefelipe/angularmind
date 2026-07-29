@@ -1,7 +1,3 @@
-/**
- * executePix = regra de negócio pura (testável sem rede).
- * O handler MSW só traduz HTTP ↔ domínio — espelha PixService + controller no Spring.
- */
 import { http, HttpResponse } from 'msw'
 import type { Db, Transfer } from '../data/db'
 import { getDb } from '../data/db'
