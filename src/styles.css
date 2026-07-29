@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #eef3f1;
-  --bg-deep: #d8e4df;
-  --fg: #10241f;
-  --muted: #4d675f;
+  --bg: #faf0f2;
+  --bg-deep: #f0d8dd;
+  --fg: #3a1218;
+  --muted: #7a4a52;
   --surface: #ffffff;
-  --accent: #0f3d36;
-  --accent-soft: #d3e8e2;
-  --gold: #c4a35a;
-  --gold-soft: #f3ead2;
-  --danger: #a3352b;
-  --border: #c5d4ce;
+  --accent: #dd0031;
+  --accent-soft: #fad7e0;
+  --gold: #f06292;
+  --gold-soft: #fde7ef;
+  --danger: #9b1c1c;
+  --border: #e5b7c1;
   --radius: 14px;
   --font: 'Sora', system-ui, sans-serif;
   --font-display: 'Instrument Serif', Georgia, serif;
-  --login-ink: #071a17;
-  --login-mist: #1a3f38;
-  --login-gold: #e0c27a;
-  --shadow: 0 12px 40px rgba(8, 40, 34, 0.12);
+  --login-ink: #4a0514;
+  --login-mist: #8a1028;
+  --login-gold: #ff8aa5;
+  --shadow: 0 12px 40px rgba(221, 0, 49, 0.14);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
