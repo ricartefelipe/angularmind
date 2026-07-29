@@ -33,7 +33,7 @@ import { ErrorBannerComponent } from '@/shared/ui/error-banner.component'
   `,
   styles: [
     `
-      .dash { display: grid; gap: 1.25rem; animation: mind-rise 320ms var(--ease) both; }
+      .dash { display: grid; gap: 1.25rem; }
       .eyebrow { margin: 0; color: var(--muted); font-size: 0.875rem; font-weight: 500; }
       h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--accent); }
       h2 { margin: 0.5rem 0 0; font-size: 1.35rem; }
@@ -42,15 +42,15 @@ import { ErrorBannerComponent } from '@/shared/ui/error-banner.component'
         display: grid; gap: 0.75rem;
         padding: clamp(1.5rem, 4vw, 2.5rem);
         border-radius: 22px;
-        background: linear-gradient(145deg, var(--accent) 0%, #082822 55%, #0a2e28 100%);
+        background: linear-gradient(145deg, var(--accent) 0%, var(--accent-hover) 55%, var(--hero-deep) 100%);
         color: #f4faf7;
-        box-shadow: 0 0 0 1px rgba(196, 163, 90, 0.25), 0 18px 50px rgba(15, 61, 54, 0.18);
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 35%, transparent),
+          0 18px 50px color-mix(in srgb, var(--accent) 28%, transparent);
       }
       .balance-card::after {
         content: ''; position: absolute; width: 220px; height: 220px; right: -40px; top: -60px;
         border-radius: 50%;
         background: radial-gradient(circle, color-mix(in srgb, var(--gold) 55%, transparent), transparent 68%);
-        animation: mind-shimmer 5.5s ease-in-out infinite;
       }
       .balance-card span, .balance-card strong { position: relative; z-index: 1; }
       .balance-card span {
@@ -69,7 +69,7 @@ import { ErrorBannerComponent } from '@/shared/ui/error-banner.component'
         min-height: 120px; padding: 1rem;
         border: 1px solid var(--border); border-radius: 18px;
         background: var(--surface); color: var(--fg); text-decoration: none; font-weight: 600; font-size: 0.875rem;
-        box-shadow: 0 1px 2px rgba(8, 40, 34, 0.06);
+        box-shadow: 0 1px 2px color-mix(in srgb, var(--accent) 10%, transparent);
         transition: transform 180ms var(--ease), box-shadow 180ms var(--ease);
       }
       .shortcuts a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }

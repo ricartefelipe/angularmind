@@ -11,7 +11,7 @@ import { ApiError } from '@/core/http/api-error'
   template: `
     <section class="login">
       <div class="login__brand">
-        <p class="login__eyebrow">Carteira digital</p>
+        <p class="login__eyebrow">Angular · Carteira</p>
         <h1>AngularMind</h1>
         <p>Sua carteira digital — saldo, PIX e favorecidos em um fluxo limpo.</p>
       </div>
@@ -46,8 +46,7 @@ import { ApiError } from '@/core/http/api-error'
       inset: -20%;
       background:
         radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--login-gold) 28%, transparent), transparent 42%),
-        radial-gradient(circle at 15% 80%, color-mix(in srgb, #5ec4b0 22%, transparent), transparent 45%);
-      animation: mind-shimmer 7s ease-in-out infinite;
+        radial-gradient(circle at 15% 80%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 45%);
       pointer-events: none;
     }
     .login__brand, .login__panel {
@@ -57,11 +56,9 @@ import { ApiError } from '@/core/http/api-error'
       flex-direction: column;
       justify-content: center;
       padding: clamp(2rem, 6vw, 5rem);
-      animation: mind-rise 320ms var(--ease) both;
     }
     .login__panel {
-      animation-delay: 80ms;
-      background: color-mix(in srgb, #04110e 55%, transparent);
+      background: color-mix(in srgb, var(--login-ink) 55%, transparent);
       border-left: 1px solid color-mix(in srgb, var(--login-gold) 28%, transparent);
       backdrop-filter: blur(18px);
     }
@@ -92,7 +89,7 @@ import { ApiError } from '@/core/http/api-error'
       padding: 0.75rem 0.9rem;
       border-radius: var(--radius);
       border: 1px solid color-mix(in srgb, var(--login-gold) 35%, transparent);
-      background: color-mix(in srgb, #0a1f1b 70%, transparent);
+      background: color-mix(in srgb, var(--login-ink) 70%, transparent);
       color: #f7faf8;
     }
     button {
@@ -100,8 +97,8 @@ import { ApiError } from '@/core/http/api-error'
       min-height: 3rem;
       border: none;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--login-gold), #b8923f);
-      color: #10241f;
+      background: linear-gradient(135deg, var(--login-gold), var(--cta-end));
+      color: #3a0010;
       font-weight: 600;
       cursor: pointer;
     }
