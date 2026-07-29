@@ -1,22 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap');
+
 :root {
-  --bg: #f6f7f9;
-  --fg: #1a1d23;
-  --accent: #0b6e4f;
-  --danger: #b00020;
-  --border: #d5d9e0;
-  --radius: 8px;
-  --font: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --bg: #eef3f1;
+  --bg-deep: #d8e4df;
+  --fg: #10241f;
+  --muted: #4d675f;
+  --surface: #ffffff;
+  --accent: #0f3d36;
+  --accent-soft: #d3e8e2;
+  --gold: #c4a35a;
+  --gold-soft: #f3ead2;
+  --danger: #a3352b;
+  --border: #c5d4ce;
+  --radius: 14px;
+  --font: 'Sora', system-ui, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --login-ink: #071a17;
+  --login-mist: #1a3f38;
+  --login-gold: #e0c27a;
+  --shadow: 0 12px 40px rgba(8, 40, 34, 0.12);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 * { box-sizing: border-box; }
+
+@keyframes mind-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mind-shimmer {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
 body {
   margin: 0;
   font-family: var(--font);
-  background: linear-gradient(160deg, #eef3f0 0%, var(--bg) 40%, #e8eef8 100%);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 55%),
+    linear-gradient(165deg, var(--bg) 0%, var(--bg-deep) 100%);
+  background-attachment: fixed;
   color: var(--fg);
   min-height: 100vh;
 }
+
 a { color: var(--accent); }
-button, input, select {
-  font: inherit;
-}
+button, input, select { font: inherit; }
+h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
