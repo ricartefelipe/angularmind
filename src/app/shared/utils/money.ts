@@ -1,4 +1,3 @@
-/** Dinheiro no contrato: CENTAVOS (integer). UI formata para o humano. */
 export function formatCents(
   cents: number,
   locale = 'pt-BR',
