@@ -7,6 +7,7 @@
   --muted: #7a4a52;
   --surface: #ffffff;
   --accent: #dd0031;
+  --accent-hover: #b30027;
   --accent-soft: #fad7e0;
   --gold: #f06292;
   --gold-soft: #fde7ef;
@@ -18,6 +19,8 @@
   --login-ink: #4a0514;
   --login-mist: #8a1028;
   --login-gold: #ff8aa5;
+  --hero-deep: #3a0010;
+  --cta-end: #b30027;
   --shadow: 0 12px 40px rgba(221, 0, 49, 0.14);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }

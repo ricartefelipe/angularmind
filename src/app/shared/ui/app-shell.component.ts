@@ -35,7 +35,6 @@ import { AuthService } from '@/core/auth/auth.service'
         background: color-mix(in srgb, var(--surface) 86%, transparent);
         border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
         backdrop-filter: blur(14px);
-        animation: mind-rise 320ms var(--ease) both;
       }
       .brand {
         display: inline-flex; align-items: center; gap: 0.55rem;
@@ -43,7 +42,8 @@ import { AuthService } from '@/core/auth/auth.service'
         color: var(--accent); text-decoration: none;
       }
       .mark {
-        width: 12px; height: 12px; border-radius: 999px;
+        width: 12px; height: 12px; border-radius: 2px;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         background: linear-gradient(135deg, var(--gold), var(--accent));
         box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 25%, transparent);
       }
