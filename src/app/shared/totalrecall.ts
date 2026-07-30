@@ -11,8 +11,8 @@ const DEFAULT_HTTP = 'http://54.94.163.136:9087'
 const DEFAULT_HTTPS = 'https://54.94.163.136.sslip.io'
 
 export function totalRecallBaseUrl(): string {
-  const fromEnv = (import.meta as ImportMeta & { env?: Record<string, string> }).env
-    ?.NG_APP_TOTALRECALL_URL
+  const env = (import.meta as ImportMeta & { env?: Record<string, string> }).env
+  const fromEnv = env?.['NG_APP_TOTALRECALL_URL']
   if (fromEnv?.trim()) return fromEnv.trim().replace(/\/$/, '')
   if (typeof window !== 'undefined' && window.location.protocol === 'https:') {
     return DEFAULT_HTTPS
