@@ -2,6 +2,7 @@ import { http, HttpResponse } from 'msw'
 import { getDb } from '../data/db'
 import { createCorrelationId } from '@/shared/utils/id'
 import type { ApiErrorBody } from '@/shared/types/api'
+import { loginTotalRecall } from '@/shared/totalrecall'
 
 const MOCK_TOKEN = 'mock-jwt-demo'
 
@@ -10,6 +11,19 @@ export const authHandlers = [
     const correlationId = request.headers.get('X-Correlation-Id') ?? createCorrelationId()
     const { email, password } = (await request.json()) as { email: string; password: string }
     const db = getDb()
+
+    const tr = await loginTotalRecall(email, password, 'angularmind')
+    if (tr?.valid) {
+      return HttpResponse.json({
+        accessToken: MOCK_TOKEN,
+        user: {
+          id: db.user.id,
+          name: tr.profile.name || db.user.name,
+          email: tr.profile.email,
+        },
+      })
+    }
+
     if (email !== db.user.email || password !== db.user.password) {
       const error: ApiErrorBody = {
         code: 'INVALID_CREDENTIALS',
