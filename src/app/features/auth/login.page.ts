@@ -26,7 +26,6 @@ import { ApiError } from '@/core/http/api-error'
             {{ loading() ? 'Entrando…' : 'Entrar na carteira' }}
           </button>
         </form>
-        <p class="hint">Demo: demo&#64;vuemind.dev / demo123</p>
       </div>
     </section>
   `,
@@ -104,11 +103,6 @@ import { ApiError } from '@/core/http/api-error'
     }
     button:disabled { opacity: 0.6; cursor: not-allowed; }
     .error { color: #ffb4a8; }
-    .hint {
-      margin-top: 1rem;
-      font-size: 0.875rem;
-      color: color-mix(in srgb, var(--login-gold) 85%, white);
-    }
     @media (max-width: 860px) {
       .login { grid-template-columns: 1fr; }
       .login__panel {
@@ -122,8 +116,8 @@ export class LoginPage {
   private readonly auth = inject(AuthService)
   private readonly router = inject(Router)
 
-  email = 'demo@vuemind.dev'
-  password = 'demo123'
+  email = ''
+  password = ''
   readonly loading = signal(false)
   readonly error = signal<string | null>(null)
 
