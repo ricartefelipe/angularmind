@@ -1,11 +1,9 @@
-import { authHandlers } from './auth.handlers'
-import { walletHandlers } from './wallet.handlers'
-import { beneficiariesHandlers } from './beneficiaries.handlers'
-import { transfersHandlers } from './transfers.handlers'
+import { createMindHandlers } from '@ricartefelipe/mind-wallet-shared/msw'
+import type { RequestHandler } from 'msw'
+import { totalRecallBaseUrl } from '../../shared/totalrecall'
 
-export const handlers = [
-  ...authHandlers,
-  ...walletHandlers,
-  ...beneficiariesHandlers,
-  ...transfersHandlers,
-]
+export const handlers = createMindHandlers({
+  apiBasePath: '/api/v1',
+  systemSlug: 'angularmind',
+  totalRecallUrl: totalRecallBaseUrl(),
+}) as unknown as RequestHandler[]
