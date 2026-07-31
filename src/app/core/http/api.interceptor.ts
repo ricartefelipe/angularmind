@@ -1,6 +1,7 @@
 import { HttpErrorResponse, type HttpInterceptorFn } from '@angular/common/http'
 import { inject } from '@angular/core'
 import { catchError, throwError } from 'rxjs'
+import { environment } from '../../../environments/environment'
 import type { ApiErrorBody } from '@/shared/types/api'
 import { createCorrelationId } from '@/shared/utils/id'
 import { TokenStorage } from '../auth/token.storage'
@@ -8,6 +9,10 @@ import { ApiError } from './api-error'
 
 function resolveApiUrl(url: string): string {
   if (!url.startsWith('/api/')) return url
+  const remote = environment.apiBaseUrl?.replace(/\/$/, '')
+  if (remote) {
+    return `${remote}${url.slice('/api/v1'.length)}`
+  }
   const base = (document.querySelector('base')?.getAttribute('href') ?? '/').replace(
     /\/?$/,
     '/',
