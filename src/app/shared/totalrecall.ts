@@ -3,9 +3,15 @@ export type TotalRecallLoginResult =
       valid: true
       profile: { id: string; name: string; email: string }
       system: { slug: string; name: string }
+      systems: { slug: string; name: string; baseUrl: string | null }[]
       expiresAt: string
     }
   | { valid: false; reason?: string }
+
+export type TotalRecallSession = {
+  accessToken: string
+  user: { id: string; name: string; email: string }
+}
 
 const DEFAULT_HTTP = 'http://54.94.163.136:9087'
 const DEFAULT_HTTPS = 'https://54.94.163.136.sslip.io'
@@ -63,5 +69,12 @@ export async function loginTotalRecall(
     return null
   } finally {
     clearTimeout(timer)
+  }
+}
+
+export function totalRecallSession(result: Extract<TotalRecallLoginResult, { valid: true }>): TotalRecallSession {
+  return {
+    accessToken: `totalrecall:${result.profile.id}`,
+    user: result.profile,
   }
 }
