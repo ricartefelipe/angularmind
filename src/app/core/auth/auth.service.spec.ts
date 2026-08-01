@@ -10,8 +10,6 @@ describe('AuthService', () => {
   let storage: TokenStorage
 
   beforeEach(() => {
-    // Limpa sessionStorage ANTES de criar AuthService — o signal `token`
-    // é inicializado com storage.get() no construtor.
     sessionStorage.clear()
     TestBed.configureTestingModule({
       providers: [provideHttpClient(), provideHttpClientTesting(), AuthService, TokenStorage],
@@ -24,46 +22,37 @@ describe('AuthService', () => {
 
   afterEach(() => http.verify())
 
-  it('login grava a sessão emitida após validar no TotalRecall', async () => {
-    spyOn(window, 'fetch').and.returnValue(
-      Promise.resolve({
-        json: async () => ({
-          valid: true,
-          profile: { id: 'u1', name: 'Felipe Demo', email: 'demo@vuemind.dev' },
-          system: { slug: 'angularmind', name: 'AngularMind' },
-          systems: [],
-          expiresAt: '2026-08-01T12:00:00.000Z',
-        }),
-      } as Response),
-    )
-
-    await new Promise<void>((resolve, reject) => {
+  it('login grava a sessão emitida pela API nativa', async () => {
+    const pending = new Promise<void>((resolve, reject) => {
       service.login('demo@vuemind.dev', 'demo123').subscribe({
         next: () => resolve(),
         error: reject,
       })
     })
 
+    const req = http.expectOne('/api/v1/auth/login')
+    expect(req.request.method).toBe('POST')
+    req.flush({
+      accessToken: 'mock-jwt-demo',
+      user: { id: 'u1', name: 'Felipe Demo', email: 'demo@vuemind.dev' },
+    })
+
+    await pending
+
     expect(service.isAuthenticated()).toBe(true)
-    expect(service.token()).toBe('totalrecall:u1')
+    expect(service.token()).toBe('mock-jwt-demo')
     expect(service.user()).toEqual({
       id: 'u1',
       name: 'Felipe Demo',
       email: 'demo@vuemind.dev',
     })
-    expect(storage.get()).toBe('totalrecall:u1')
+    expect(storage.get()).toBe('mock-jwt-demo')
   })
 
-  it('mantém sessão vazia quando TotalRecall rejeita a senha', async () => {
+  it('mantém sessão vazia quando a API rejeita a senha', async () => {
     let receivedError: HttpErrorResponse | undefined
 
-    spyOn(window, 'fetch').and.returnValue(
-      Promise.resolve({
-        json: async () => ({ valid: false, reason: 'invalid_credentials' }),
-      } as Response),
-    )
-
-    await new Promise<void>((resolve) => {
+    const pending = new Promise<void>((resolve) => {
       service.login('demo@vuemind.dev', 'senha-incorreta').subscribe({
         error: (error: HttpErrorResponse) => {
           receivedError = error
@@ -71,6 +60,14 @@ describe('AuthService', () => {
         },
       })
     })
+
+    const req = http.expectOne('/api/v1/auth/login')
+    req.flush(
+      { code: 'INVALID_CREDENTIALS', message: 'Email ou senha inválidos.' },
+      { status: 401, statusText: 'Unauthorized' },
+    )
+
+    await pending
 
     expect(receivedError?.status).toBe(401)
     expect(service.isAuthenticated()).toBe(false)
