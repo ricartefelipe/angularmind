@@ -8,7 +8,7 @@ import { ApiError } from '@/core/http/api-error'
 import { AppButtonComponent } from '@/shared/ui/app-button.component'
 import { ErrorBannerComponent } from '@/shared/ui/error-banner.component'
 import { SkeletonComponent } from '@/shared/ui/skeleton.component'
-import { formatCents } from '@/shared/utils/money'
+import { formatCents, toCents } from '@/shared/utils/money'
 import type { Transaction } from './types'
 import { WalletService } from './wallet.service'
 
@@ -369,8 +369,10 @@ export class DashboardPage implements OnInit {
   }
 
   limitPercent(spent: number, limit: number): number {
-    if (limit <= 0) return 0
-    return Math.min(100, Math.round((spent / limit) * 100))
+    const safeLimit = toCents(limit)
+    const safeSpent = toCents(spent)
+    if (safeLimit <= 0) return 0
+    return Math.min(100, Math.round((safeSpent / safeLimit) * 100))
   }
 
   correlation(error: Error | null): string | undefined {
