@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pages-deploy-v2
+  group: pages-deploy-v2-v2
   cancel-in-progress: true
 
 jobs:
