@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap');
 
-:root {
+:root,
+[data-theme='light'] {
   --bg: #faf0f2;
   --bg-deep: #f0d8dd;
   --fg: #3a1218;
@@ -25,16 +26,50 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* { box-sizing: border-box; }
+[data-theme='dark'] {
+  --bg: #14070a;
+  --bg-deep: #250d12;
+  --fg: #f7e8eb;
+  --muted: #d0a0a8;
+  --surface: #1d0c10;
+  --accent: #ff4d6d;
+  --accent-hover: #ff6b84;
+  --accent-soft: #3a1520;
+  --gold: #ff8aa5;
+  --gold-soft: #2a1016;
+  --danger: #ff8a80;
+  --border: #4a2430;
+  --login-ink: #1a050a;
+  --login-mist: #4a1020;
+  --login-gold: #ff8aa5;
+  --hero-deep: #120308;
+  --cta-end: #ff4d6d;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
 
 @keyframes mind-rise {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes mind-shimmer {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 body {
@@ -48,6 +83,19 @@ body {
   min-height: 100vh;
 }
 
-a { color: var(--accent); }
-button, input, select { font: inherit; }
-h1, h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; }
+a {
+  color: var(--accent);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
