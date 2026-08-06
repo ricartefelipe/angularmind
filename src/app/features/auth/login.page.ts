@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthService } from '@/core/auth/auth.service'
+import { I18nService } from '@/core/i18n/i18n.service'
 import { ApiError } from '@/core/http/api-error'
 
 @Component({
@@ -12,18 +13,20 @@ import { ApiError } from '@/core/http/api-error'
     <section class="login">
       <div class="login__brand">
         <p class="login__eyebrow">Angular · Carteira</p>
-        <h1>AngularMind</h1>
-        <p>Sua carteira digital — saldo, PIX e favorecidos em um fluxo limpo.</p>
+        <h1>{{ i18n.t('login.title') }}</h1>
+        <p>{{ i18n.t('login.subtitle') }}</p>
       </div>
       <div class="login__panel">
         <form (ngSubmit)="submit()">
-          <label>Email <input name="email" [(ngModel)]="email" type="email" required /></label>
-          <label>Senha <input name="password" [(ngModel)]="password" type="password" required /></label>
+          <label for="email">{{ i18n.t('login.email') }}</label>
+          <input id="email" name="email" [(ngModel)]="email" type="email" required />
+          <label for="password">{{ i18n.t('login.password') }}</label>
+          <input id="password" name="password" [(ngModel)]="password" type="password" required />
           @if (error()) {
             <p class="error">{{ error() }}</p>
           }
           <button type="submit" [disabled]="loading()">
-            {{ loading() ? 'Entrando…' : 'Entrar na carteira' }}
+            {{ loading() ? i18n.t('login.submitting') : i18n.t('login.submit') }}
           </button>
         </form>
       </div>
@@ -81,7 +84,7 @@ import { ApiError } from '@/core/http/api-error'
       line-height: 1.55;
       color: color-mix(in srgb, #f7faf8 78%, transparent);
     }
-    form, label { display: grid; gap: 0.5rem; max-width: 380px; }
+    form { display: grid; gap: 0.5rem; max-width: 380px; }
     label { font-size: 0.875rem; color: color-mix(in srgb, #f7faf8 70%, transparent); }
     input {
       min-height: 2.85rem;
@@ -113,6 +116,7 @@ import { ApiError } from '@/core/http/api-error'
   `,
 })
 export class LoginPage {
+  readonly i18n = inject(I18nService)
   private readonly auth = inject(AuthService)
   private readonly router = inject(Router)
 
@@ -132,7 +136,7 @@ export class LoginPage {
       },
       error: (error: unknown) => {
         this.loading.set(false)
-        this.error.set(error instanceof ApiError ? error.message : 'Falha no login')
+        this.error.set(error instanceof ApiError ? error.message : this.i18n.t('common.error'))
       },
     })
   }

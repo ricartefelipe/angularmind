@@ -31,6 +31,16 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/transfers/transfer-pix.page').then((m) => m.TransferPixPage),
       },
+      {
+        path: 'notifications',
+        loadComponent: () =>
+          import('./features/notifications/notifications.page').then((m) => m.NotificationsPage),
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./features/settings/settings.page').then((m) => m.SettingsPage),
+      },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },

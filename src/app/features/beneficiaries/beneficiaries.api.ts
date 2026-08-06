@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import type { Beneficiary, BeneficiariesResponse, CreateBeneficiaryRequest } from './types'
+import type { BeneficiariesResponse, Beneficiary, CreateBeneficiaryRequest } from './types'
 
 @Injectable({ providedIn: 'root' })
 export class BeneficiariesApi {

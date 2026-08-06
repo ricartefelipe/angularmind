@@ -17,10 +17,12 @@ describe('TransfersService', () => {
 
   afterEach(() => http.verify())
 
-  it('reutiliza a chave criada ao entrar na confirmação', () => {
-    service.beginConfirm()
-    service.confirmPix('beneficiary-1', 1050)
+  it('reutiliza a Idempotency-Key no retry do confirm', async () => {
+    service.setDestination({ mode: 'beneficiary', beneficiaryId: 'beneficiary-1' })
+    service.setAmount(1050)
+    service.skipSchedule()
 
+    const first = service.confirmPix()
     const firstRequest = http.expectOne('/api/v1/transfers/pix')
     const idempotencyKey = firstRequest.request.headers.get('Idempotency-Key')
     expect(idempotencyKey).toBeTruthy()
@@ -32,8 +34,10 @@ describe('TransfersService', () => {
       },
       { status: 409, statusText: 'Conflict' },
     )
+    await first
+    expect(service.step()).toBe('confirm')
 
-    service.confirmPix('beneficiary-1', 1050)
+    const retry = service.confirmPix()
     const retryRequest = http.expectOne('/api/v1/transfers/pix')
     expect(retryRequest.request.headers.get('Idempotency-Key')).toBe(idempotencyKey)
     retryRequest.flush({
@@ -42,6 +46,10 @@ describe('TransfersService', () => {
       amountCents: 1050,
       status: 'COMPLETED',
       createdAt: '2026-07-22T12:00:00.000Z',
+      endToEndId: 'E2E123',
+      correlationId: 'correlation-2',
     })
+    await retry
+    expect(service.step()).toBe('receipt')
   })
 })
