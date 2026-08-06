@@ -11,6 +11,12 @@ export default {
     settings: 'Ajustes',
     logout: 'Sair',
   },
+  account: {
+    menu: 'Menu da conta',
+    profile: 'Perfil',
+    settings: 'Conta e ajustes',
+    logout: 'Sair',
+  },
   login: {
     title: 'AngularMind',
     subtitle: 'Sua carteira digital — saldo, PIX e favorecidos em um fluxo limpo.',
