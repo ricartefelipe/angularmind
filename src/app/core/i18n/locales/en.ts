@@ -11,6 +11,12 @@ export default {
     settings: 'Settings',
     logout: 'Log out',
   },
+  account: {
+    menu: 'Account menu',
+    profile: 'Profile',
+    settings: 'Account & settings',
+    logout: 'Log out',
+  },
   login: {
     title: 'AngularMind',
     subtitle: 'Your digital wallet — balance, PIX and payees in a clean flow.',
