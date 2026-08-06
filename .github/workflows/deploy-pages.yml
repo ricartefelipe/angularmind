@@ -6,14 +6,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: pages-deploy-v2-v2
-  cancel-in-progress: true
+  group: pages-deploy-v3
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,10 +39,9 @@ jobs:
         working-directory: app
       - run: npm run build:pages
         working-directory: app
-      - run: touch app/dist/angularmind/browser/.nojekyll
-      - uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: app/dist/angularmind/browser
-          force_orphan: true
-          full_commit_message: deploy pages
+          path: app/dist/angularmind/browser
+      - id: deployment
+        uses: actions/deploy-pages@v4
