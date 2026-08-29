@@ -27,9 +27,15 @@ export class I18nService {
   readonly locale = signal<Locale>(this.readInitial())
   readonly tick = computed(() => this.locale())
 
-  t(key: string): string {
+  t(key: string, params?: Record<string, string | number>): string {
     this.tick()
-    return lookup(messages[this.locale()], key) ?? lookup(messages['pt-BR'], key) ?? key
+    let value = lookup(messages[this.locale()], key) ?? lookup(messages['pt-BR'], key) ?? key
+    if (params) {
+      for (const [name, val] of Object.entries(params)) {
+        value = value.replaceAll(`{{${name}}}`, String(val))
+      }
+    }
+    return value
   }
 
   setLocale(locale: Locale): void {
