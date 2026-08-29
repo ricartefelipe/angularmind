@@ -30,9 +30,8 @@ describe('authGuard', () => {
 
     const result = TestBed.runInInjectionContext(() =>
       authGuard(new ActivatedRouteSnapshot(), {} as RouterStateSnapshot),
-    )
+    ) as UrlTree
 
-    expect(result instanceof UrlTree).toBe(true)
-    expect(router.serializeUrl(result as UrlTree)).toBe('/login')
+    expect(router.serializeUrl(result)).toBe('/login')
   })
 })
