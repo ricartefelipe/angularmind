@@ -14,6 +14,7 @@
   --gold: #f06292;
   --gold-soft: #fde7ef;
   --danger: #9b1c1c;
+  --danger-bg: #f6dfdb;
   --border: #e5b7c1;
   --radius: 14px;
   --font: 'Sora', system-ui, sans-serif;
@@ -33,12 +34,14 @@
   --fg: #f7e8eb;
   --muted: #d0a0a8;
   --surface: #1d0c10;
+  --surface-elevated: #251218;
   --accent: #ff4d6d;
   --accent-hover: #ff6b84;
   --accent-soft: #3a1520;
   --gold: #ff8aa5;
   --gold-soft: #2a1016;
   --danger: #ff8a80;
+  --danger-bg: #3a2220;
   --border: #4a2430;
   --login-ink: #1a050a;
   --login-mist: #4a1020;
