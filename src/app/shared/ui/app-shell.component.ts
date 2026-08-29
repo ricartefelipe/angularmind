@@ -26,6 +26,7 @@ import { NotificationsService } from '@/features/notifications/notifications.ser
               <span class="badge" data-testid="notifications-badge">{{ notifications.unreadCount() }}</span>
             }
           </a>
+          <a routerLink="/arquivo" routerLinkActive="active">{{ i18n.t('nav.archive') }}</a>
           <a routerLink="/settings" routerLinkActive="active">{{ i18n.t('nav.settings') }}</a>
         </nav>
         <div class="user-menu" data-user-menu>
