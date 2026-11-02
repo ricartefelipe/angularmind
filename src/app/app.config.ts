@@ -1,4 +1,4 @@
-import { provideHttpClient, withInterceptors } from '@angular/common/http'
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http'
 import { APP_INITIALIZER, ApplicationConfig, inject, provideZoneChangeDetection } from '@angular/core'
 import { provideRouter, withHashLocation } from '@angular/router'
 import { ThemeService } from './core/theme/theme.service'
@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withHashLocation()),
-    provideHttpClient(withInterceptors([apiInterceptor])),
+    provideHttpClient(withXhr(), withInterceptors([apiInterceptor])),
     {
       provide: APP_INITIALIZER,
       multi: true,

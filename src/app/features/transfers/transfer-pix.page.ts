@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, inject, signal } from '@angular/core'
+import { Component, OnInit, ElementRef, ViewChild, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { RouterLink } from '@angular/router'
 import QRCode from 'qrcode'
@@ -258,6 +258,7 @@ import type { PixDestination } from './types'
       }
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .page {

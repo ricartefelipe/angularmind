@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core'
 import { Router } from '@angular/router'
 import { AuthService } from '@/core/auth/auth.service'
 import { I18nService, type Locale } from '@/core/i18n/i18n.service'
@@ -53,6 +53,7 @@ import { AppButtonComponent } from '@/shared/ui/app-button.component'
       </fieldset>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .page {
