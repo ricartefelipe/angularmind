@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http'
+import { provideHttpClient, withXhr } from '@angular/common/http'
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { TransfersService } from './transfers.service'
@@ -9,7 +9,7 @@ describe('TransfersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideHttpClient(), provideHttpClientTesting(), TransfersService],
+      providers: [provideHttpClient(withXhr()), provideHttpClientTesting(), TransfersService],
     })
     service = TestBed.inject(TransfersService)
     http = TestBed.inject(HttpTestingController)

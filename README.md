@@ -1,6 +1,6 @@
 # AngularMind Wallet
 
-Carteira digital de estudo em **Angular 19** (standalone + signals + TypeScript) — Mind Wallet 2.0, mesmo contrato `/api/v1` da trilha VueMind.
+Carteira digital de estudo em **Angular 22** (standalone + signals + TypeScript) — Mind Wallet 2.0, mesmo contrato `/api/v1` da trilha VueMind.
 
 ## Como rodar
 
@@ -14,7 +14,7 @@ Abra `http://localhost:4200`.
 **Login demo:** `demo@vuemind.dev` / `demo123`
 
 ```bash
-npm test          # testes unitários (Karma + Jasmine)
+npm test          # testes unitários (Vitest)
 npm run test:e2e  # smoke Playwright (MSW)
 npm run build     # build de produção
 ```

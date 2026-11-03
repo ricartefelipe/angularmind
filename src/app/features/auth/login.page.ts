@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core'
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
 import { AuthService } from '@/core/auth/auth.service'
@@ -32,6 +32,7 @@ import { ApiError } from '@/core/http/api-error'
       </div>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: `
     .login {
       position: relative;
