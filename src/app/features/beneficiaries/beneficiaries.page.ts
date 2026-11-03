@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core'
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { I18nService } from '@/core/i18n/i18n.service'
 import { OnboardingService } from '@/features/onboarding/onboarding.service'
@@ -92,6 +92,7 @@ import type { PixKeyType } from './types'
       }
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .page {

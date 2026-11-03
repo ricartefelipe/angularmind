@@ -2,7 +2,7 @@
 
 ## Como falar do projeto em 60s
 
-> “Montei uma carteira digital em Angular 19 + TypeScript: login com guard, saldo/extrato, favorecidos e PIX. A API é mockada com MSW no mesmo contrato `/api/v1` que depois pluga no Spring. Usei standalone components, signals nos services, `HttpInterceptorFn` para Bearer e correlation id, e testes Karma/Jasmine.”
+> “Montei uma carteira digital em Angular 22 + TypeScript: login com guard, saldo/extrato, favorecidos e PIX. A API é mockada com MSW no mesmo contrato `/api/v1` que depois pluga no Spring. Usei standalone components, signals nos services, `HttpInterceptorFn` para Bearer e correlation id, e testes Karma/Jasmine.”
 
 ## Conceitos que costumam cair
 

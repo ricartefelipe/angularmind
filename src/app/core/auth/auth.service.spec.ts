@@ -1,4 +1,4 @@
-import { HttpErrorResponse, provideHttpClient } from '@angular/common/http'
+import { HttpErrorResponse, provideHttpClient, withXhr } from '@angular/common/http'
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
 import { AuthService } from './auth.service'
@@ -12,7 +12,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     sessionStorage.clear()
     TestBed.configureTestingModule({
-      providers: [provideHttpClient(), provideHttpClientTesting(), AuthService, TokenStorage],
+      providers: [provideHttpClient(withXhr()), provideHttpClientTesting(), AuthService, TokenStorage],
     })
     storage = TestBed.inject(TokenStorage)
     storage.clear()

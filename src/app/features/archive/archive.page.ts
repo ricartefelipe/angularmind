@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core'
+import { Component, OnInit, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { I18nService } from '@/core/i18n/i18n.service'
 import { AppButtonComponent } from '@/shared/ui/app-button.component'
@@ -34,6 +34,7 @@ type GraphEdge = GraphSnapshot['relations'][number] & {
   standalone: true,
   selector: 'app-archive-page',
   imports: [FormsModule, AppButtonComponent, ErrorBannerComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <section class="archive-page">
       <header class="archive-page__head">

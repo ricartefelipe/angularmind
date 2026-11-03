@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
   standalone: true,
@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core'
       }
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .skeleton {

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core'
 import { I18nService } from '@/core/i18n/i18n.service'
 import { ApiError } from '@/core/http/api-error'
 import { AppButtonComponent } from '@/shared/ui/app-button.component'
@@ -75,6 +75,7 @@ import { NotificationsService } from './notifications.service'
       }
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .page {

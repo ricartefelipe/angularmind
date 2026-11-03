@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, computed, inject, signal } from '@angular/core'
+import { Component, HostListener, OnInit, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'
 import { AuthService } from '@/core/auth/auth.service'
 import { I18nService } from '@/core/i18n/i18n.service'
@@ -74,6 +74,7 @@ import { NotificationsService } from '@/features/notifications/notifications.ser
       <main><router-outlet /></main>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .shell {

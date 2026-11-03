@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core'
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core'
 import { RouterLink } from '@angular/router'
 import { AuthService } from '@/core/auth/auth.service'
 import { I18nService } from '@/core/i18n/i18n.service'
@@ -141,6 +141,7 @@ import { WalletService } from './wallet.service'
       </section>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       .dash {
